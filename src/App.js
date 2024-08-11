@@ -14,11 +14,23 @@ export default function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
+  function handleToggleItems(id) {
+    setItems((items) =>
+      [...items].map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+
   return (
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <CheckingLists onDeleteItems={handleDeleteItems} items={items} />
+      <CheckingLists
+        onCheckedItems={handleToggleItems}
+        onDeleteItems={handleDeleteItems}
+        items={items}
+      />
       <Stats />
     </div>
   );

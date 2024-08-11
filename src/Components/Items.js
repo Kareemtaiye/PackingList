@@ -1,11 +1,15 @@
-function Items({ items, onDeleteItems }) {
+function Items({ item, onDeleteItems, onCheckedItems }) {
   return (
     <li>
-      <input value={items.packed} type="checkbox"></input>
-      <span style={items.packed ? { textDecoration: "line-through" } : {}}>
-        {items.quantity} {items.description}
+      <input
+        onChange={() => onCheckedItems(item.id)}
+        value={item.packed}
+        type="checkbox"
+      ></input>
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.description}
       </span>
-      <button onClick={() => onDeleteItems(items.id)}>❌</button>
+      <button onClick={() => onDeleteItems(item.id)}>❌</button>
     </li>
   );
 }

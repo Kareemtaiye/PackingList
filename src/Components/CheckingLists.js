@@ -1,10 +1,15 @@
 import Items from "./Items";
 
-function CheckingLists({ items, onDeleteItems }) {
+function CheckingLists({ items, onDeleteItems, onCheckedItems }) {
   return (
     <ul className="list">
-      {items.map((items) => (
-        <Items key={items.id} items={items} onDeleteItems={onDeleteItems} />
+      {items.map((item) => (
+        <Items
+          onCheckedItems={onCheckedItems}
+          key={item.id}
+          item={item}
+          onDeleteItems={onDeleteItems}
+        />
       ))}
     </ul>
   );
