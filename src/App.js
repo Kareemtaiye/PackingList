@@ -22,6 +22,12 @@ export default function App() {
     );
   }
 
+  function handleClearItems() {
+    const confirmation = window.confirm("Clear packing items?");
+
+    if (confirmation) setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -30,8 +36,9 @@ export default function App() {
         onCheckedItems={handleToggleItems}
         onDeleteItems={handleDeleteItems}
         items={items}
+        handleClearItems={handleClearItems}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }
